@@ -1,6 +1,6 @@
-import {Teams, TeamOverview, UserData} from 'types';
+import {TeamsBasicInfo, TeamOverview, UserData} from 'types';
 
-const getData = async (path = '') => {
+const getData = async (path: string) => {
     const url = `${process.env.REACT_APP_API_BASE_URL}/${path}`;
     const res = await fetch(url);
     const json = await res.json();
@@ -8,7 +8,7 @@ const getData = async (path = '') => {
     return json;
 };
 
-export const getTeams = (): Promise<Teams[]> => {
+export const getTeams = (): Promise<TeamsBasicInfo[]> => {
     return getData('teams');
 };
 
