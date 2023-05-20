@@ -6,10 +6,10 @@ export const Container = styled.div<{hasNavigation: boolean}>`
     align-items: center;
     justify-content: center;
     border: 1px solid black;
-    background: #ddd;
+    background: #fafafa;
     padding: 20px;
     width: 250px;
-    max-height: 200px;
+    min-height: 100px;
     cursor: ${props => (props.hasNavigation ? 'pointer' : 'default')};
-    margin: 5px;
+    border-radius: 8px;
 `;
