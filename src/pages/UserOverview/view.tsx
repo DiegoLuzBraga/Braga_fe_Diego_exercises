@@ -8,15 +8,15 @@ import Header from '../../components/Header';
 const renderUser = (user: UserData) => {
     const columns = [
         {
-            prefix: 'Name',
+            prefix: 'Name: ',
             value: `${user.firstName} ${user.lastName}`,
         },
         {
-            prefix: 'Display Name',
+            prefix: 'Display Name: ',
             value: user.displayName,
         },
         {
-            prefix: 'Location',
+            prefix: 'Location: ',
             value: user.location,
         },
     ];
