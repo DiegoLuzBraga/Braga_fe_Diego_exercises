@@ -9,25 +9,25 @@ import {SearchBar} from '../../components/Searchbar';
 import {useTeamOverviewViewModel} from './viewModel';
 
 const renderTeamLead = (teamLead: UserData) => {
-    const columns = [
+    const teamLeadData = [
         {
             prefix: 'Team Lead',
             value: '',
         },
         {
-            prefix: 'Name',
+            prefix: 'Name: ',
             value: `${teamLead.firstName} ${teamLead.lastName}`,
         },
         {
-            prefix: 'Display Name',
+            prefix: 'Display Name: ',
             value: teamLead.displayName,
         },
         {
-            prefix: 'Location',
+            prefix: 'Location: ',
             value: teamLead.location,
         },
     ];
-    return <Card teamData={columns} url={`/user/${teamLead.id}`} navigationProps={teamLead} />;
+    return <Card teamData={teamLeadData} url={`/user/${teamLead.id}`} navigationProps={teamLead} />;
 };
 
 const TeamOverview = () => {
@@ -44,6 +44,12 @@ const TeamOverview = () => {
                 <React.Fragment>
                     {renderTeamLead(pageData.teamLead)}
                     <List items={formatedTeams} isLoading={false} />
+                </React.Fragment>
+            )}
+            {pageData.teamMembers?.length === 0 && !isLoading && (
+                <React.Fragment>
+                    <p>Looks like we didn&apos;t find any members of the team</p>
+                    <p>Try to refresh the page!</p>
                 </React.Fragment>
             )}
         </Container>

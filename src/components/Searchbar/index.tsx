@@ -16,6 +16,7 @@ export const SearchBar = ({searchQuery, setSearchQuery}: Props) => (
         sx={{
             color: 'white',
             width: '100%',
+            marginBottom: '16px',
         }}
         InputProps={{
             value: searchQuery,
