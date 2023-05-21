@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {useNavigate} from 'react-router-dom';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import {HeaderContainer, NavigationHeader, BackButton, Title} from './styles';
 
 interface Props {
@@ -13,12 +14,8 @@ const Header = ({title, showBackButton = true}: Props) => {
         <HeaderContainer>
             <NavigationHeader>
                 {showBackButton && (
-                    <BackButton
-                        onClick={() => {
-                            navigate(-1);
-                        }}
-                    >
-                        🔙
+                    <BackButton onClick={() => navigate(-1)}>
+                        <ArrowBackIcon />
                     </BackButton>
                 )}
                 <Title>{title}</Title>

@@ -1,22 +1,19 @@
 import * as React from 'react';
 import {useNavigate} from 'react-router-dom';
-import {Teams, UserData} from 'types';
+import {TeamInfo, TeamsBasicInfo, UserData} from 'types';
 import {Container} from './styles';
 
 interface Props {
     id?: string;
     url?: string;
-    columns: Array<{
-        key: string;
-        value: string;
-    }>;
+    teamData: TeamInfo[];
     hasNavigation?: boolean;
-    navigationProps?: UserData | Teams;
+    navigationProps?: UserData | TeamsBasicInfo;
 }
 
 const Card = ({
     id,
-    columns,
+    teamData,
     url,
     hasNavigation = true,
     navigationProps = null,
@@ -28,17 +25,17 @@ const Card = ({
             data-testid={`cardContainer-${id}`}
             hasNavigation={hasNavigation}
             onClick={(e: Event) => {
+                e.preventDefault();
                 if (hasNavigation) {
                     navigate(url, {
                         state: navigationProps,
                     });
                 }
-                e.preventDefault();
             }}
         >
-            {columns.map(({key: columnKey, value}) => (
-                <p key={columnKey}>
-                    <strong>{columnKey}</strong>&nbsp;{value}
+            {teamData.map(({prefix, value}, index) => (
+                <p key={`${prefix}-${index}`}>
+                    <strong>{prefix}</strong>&nbsp;{value}
                 </p>
             ))}
         </Container>

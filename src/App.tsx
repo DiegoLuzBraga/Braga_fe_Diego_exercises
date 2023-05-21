@@ -1,11 +1,12 @@
 import * as React from 'react';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
-import TeamOverview from './pages/TeamOverview';
-import Teams from './pages/Teams';
-import UserOverview from './pages/UserOverview';
+import UserOverview from './pages/UserOverview/view';
+import TeamOverview from './pages/TeamOverview/view';
+import Teams from './pages/Teams/view';
+import {NotificationProvider} from './hooks/useNotification';
 
 const App = () => {
-    var router = createBrowserRouter([
+    const router = createBrowserRouter([
         {
             path: '/',
             element: <Teams />,
@@ -19,7 +20,11 @@ const App = () => {
             element: <UserOverview />,
         },
     ]);
-    return <RouterProvider router={router} />;
+    return (
+        <NotificationProvider>
+            <RouterProvider router={router} />
+        </NotificationProvider>
+    );
 };
 
 export default App;

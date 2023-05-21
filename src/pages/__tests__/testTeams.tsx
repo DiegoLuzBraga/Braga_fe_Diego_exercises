@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {fireEvent, render, screen, waitFor, act} from '@testing-library/react';
 import * as API from '../../api';
-import Teams from '../Teams';
+import Teams from '../Teams/view';
 
 jest.mock('react-router-dom', () => ({
     useLocation: () => ({
@@ -29,7 +29,9 @@ describe('Teams', () => {
     });
 
     it('should render spinner while loading', async () => {
-        // TODO - Add code for this test
+        render(<Teams />);
+
+        expect(screen.getByTestId('spinner')).toBeInTheDocument();
     });
 
     it('should render teams list', async () => {

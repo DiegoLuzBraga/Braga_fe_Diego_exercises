@@ -2,32 +2,27 @@ import * as React from 'react';
 import {ListItem} from 'types';
 import Card from '../Card';
 import {Spinner} from '../Spinner';
-import {Container} from './styles';
+import * as S from './styles';
 
 interface Props {
     items?: ListItem[];
     hasNavigation?: boolean;
-    isLoading: string;
+    isLoading: boolean;
 }
 
 const List = ({items, hasNavigation = true, isLoading}: Props) => {
     return (
-        <Container>
-            {isLoading && <Spinner />}
-            {!isLoading &&
-                items.map(({url, id, columns, navigationProps}, index) => {
+        <S.Container>
+            {isLoading ? (
+                <Spinner />
+            ) : (
+                items.map((item, index) => {
                     return (
-                        <Card
-                            key={`${id}-${index}`}
-                            id={id}
-                            columns={columns}
-                            navigationProps={navigationProps}
-                            hasNavigation={hasNavigation}
-                            url={url}
-                        />
+                        <Card key={`${item.id}-${index}`} hasNavigation={hasNavigation} {...item} />
                     );
-                })}
-        </Container>
+                })
+            )}
+        </S.Container>
     );
 };
 
