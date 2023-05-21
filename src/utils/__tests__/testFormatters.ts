@@ -53,6 +53,22 @@ describe('testing both formatters', () => {
         expect(responseUsers).toHaveLength(0);
     });
 
+    it('should still return empty array', () => {
+        const responseTeams = formatTeamsToList([], teamDataArray);
+        const responseUsers = formatUsersToList([], teamDataArrayUsers);
+
+        expect(responseTeams).toHaveLength(0);
+        expect(responseUsers).toHaveLength(0);
+    });
+
+    it('should return an array but with teamData field empty', () => {
+        const responseTeams = formatTeamsToList(teamMembers, () => []);
+        const responseUsers = formatUsersToList(teamMembersUser, () => []);
+
+        expect(responseTeams[0].teamData).toHaveLength(0);
+        expect(responseUsers[0].teamData).toHaveLength(0);
+    });
+
     it('should format correctly based on the fields passed', () => {
         const responseTeams = formatTeamsToList(teamMembers, teamDataArray);
         const responseUsers = formatUsersToList(teamMembersUser, teamDataArrayUsers);
