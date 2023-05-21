@@ -12,9 +12,8 @@ const Teams = () => {
         <Container>
             <Header title="Teams" showBackButton={false} />
             <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-            {teams.length ? (
-                <List items={formatedTeams} isLoading={isLoading} />
-            ) : (
+            <List items={formatedTeams} isLoading={isLoading} />
+            {teams.length === 0 && !isLoading && (
                 <React.Fragment>
                     <p>Looks like we didn&apos;t find any team</p>
                     <p>Try to refresh the page!</p>

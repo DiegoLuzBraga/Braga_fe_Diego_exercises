@@ -33,8 +33,8 @@ describe('Card', () => {
 
         render(<Card teamData={teamData} />);
 
-        expect(screen.getByText('columnKey1')).toBeInTheDocument();
-        expect(screen.getByText('columnValue1')).toBeInTheDocument();
+        expect(screen.getByText('columnKey')).toBeInTheDocument();
+        expect(screen.getByText('columnValue')).toBeInTheDocument();
         expect(screen.getByText('columnKey2')).toBeInTheDocument();
         expect(screen.getByText('columnValue2')).toBeInTheDocument();
         expect(screen.getByText('columnKey3')).toBeInTheDocument();
